@@ -1,0 +1,43 @@
+﻿@page "/reviews"
+@inject HttpClient Http
+<div>
+<h2>Movie reviews</h2>
+
+@if(reviews == null){
+    <p>Loading reviews...</p>
+}
+else{
+   <ul>
+       @foreach (var review in reviews)
+    {
+          
+
+                <li><h1>@review.movie ★@review.rating/5</h1></li>
+             <li><h2>@review.title</h2></li>
+           <li>  <p>@review.content</p></li>
+           <li>  <span>written by @review.creator</span></li> 
+    }
+</ul>
+}
+</div>
+@code{
+    //Get the movie reviews from the API and write them out
+    private Reviews[]? reviews;
+
+    protected override async Task OnInitializedAsync()
+    {
+        reviews = await Http.GetFromJsonAsync<Reviews[]>("https://afternoon-beyond-27166.herokuapp.com");
+    }
+
+    public class Reviews
+    {
+        public string? rating { get; set; }
+        public string? movie { get; set; }
+        public string? title { get; set; }
+        public string? content { get; set; }
+        public string? creator { get; set; }
+    }
+
+
+
+}

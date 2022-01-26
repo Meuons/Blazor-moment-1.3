@@ -1,0 +1,30 @@
+﻿@page "/Converter"
+
+<PageTitle>Form</PageTitle>
+
+<h1>Converter</h1>
+
+
+    <input @bind="InputValue"  />
+
+    <button class="btn btn-primary" @onclick="() => ToFeet()">Meter to feet</button>
+    <button class="btn btn-primary" @onclick="() => ToMph()">km/h to mph</button>
+
+@code {
+    //Take the input and convert it to the th desired unit
+    private double InputValue {get;set;}
+    public double? Result { get; set; }
+    public void ToFeet()  
+    {
+        Result = Convert.ToDouble(InputValue) * 3.28;
+    }
+    public void ToMph ()  
+    {
+        Result = Convert.ToDouble(InputValue) / 1.609344;
+    }  
+
+}
+<p>@Result</p>
+
+
+

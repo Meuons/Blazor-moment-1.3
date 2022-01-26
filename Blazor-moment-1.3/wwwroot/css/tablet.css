@@ -1,0 +1,15 @@
+﻿/*Make the sidebar veritcal and adjust the other elements to that*/
+
+        .sidebar a {
+            display: unset;
+            padding: 10px;
+            border: 2px solid black;
+            margin-bottom: 20px;
+        }
+.mainContent {
+    position: relative;
+    top: 60px;
+}
+header{
+    margin-bottom: 0;
+}
